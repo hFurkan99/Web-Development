@@ -1,0 +1,21 @@
+@model Course
+
+<div class="card mb-3" id="@Model.id">
+    <div class="row">
+        <div class="col-md">
+            <a href="/course/details/@Model.id">
+                <img src="~/img/@Model.image" class="img-fluid rounded-start" alt="">
+            </a>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <a href="/course/details/@Model.id">
+                    <h5 class="card-title">@Model.title</h5>
+                </a>
+
+                <p class="card-text">@Model.description</p>
+            </div>
+
+        </div>
+    </div>
+</div>

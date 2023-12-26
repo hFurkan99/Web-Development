@@ -1,0 +1,116 @@
+#id {
+  width: 100%;
+}
+
+.side-bar {
+  margin-top: 5vh;
+  margin-right: 15px;
+  padding-top: 150px;
+  width: 50vh;
+  min-height: 100vh;
+  height: max-content;
+  background-color: rgb(213, 163, 47);
+  text-align: center;
+  border-top-right-radius: 15px;
+  color: rgb(73, 16, 10);
+}
+
+.side-bar button:hover {
+  background-color: rgb(25, 135, 84);
+  color: antiquewhite;
+}
+
+.main-page {
+  display: flex;
+  background-color: rgb(192, 54, 68);
+}
+
+.new-project {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15vh;
+  text-align: center;
+  color: aliceblue;
+}
+
+.new-project img {
+  width: 550px;
+  height: auto;
+  border-radius: 15px;
+}
+
+.new-project button {
+  background-color: rgb(209, 199, 20);
+  color: black;
+}
+
+.adding-project {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15vh;
+  width: 100vh;
+}
+
+.cancel-save-btns {
+  text-align: end;
+  margin: 25px;
+  margin-right: 0px;
+}
+
+.add-project-label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  color: aliceblue;
+}
+
+.add-project-input {
+  width: 100%;
+  background-color: rgb(223, 190, 108);
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.project-page {
+  font-size: larger;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-top: 150px;
+}
+
+.project-title {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.project-title h4 {
+  font-size: xx-large;
+}
+
+.project-date {
+  color: aliceblue;
+  margin-bottom: 50px;
+}
+.project-description {
+  margin-bottom: 50px;
+  word-wrap: break-word;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.delete-btn {
+  margin-left: auto;
+}
+
+.task-text {
+  word-wrap: break-word;
+  margin-right: 45px;
+}
+
+.task-list button {
+  max-height: 40px;
+}

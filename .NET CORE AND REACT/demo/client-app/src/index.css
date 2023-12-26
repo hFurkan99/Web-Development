@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+#home-page {
+  background-color: blueviolet;
+  height: 100vh;
+  text-align: center;
+  padding-top: 30vh;
+  color: aliceblue;
+}
+/*ActivityDashboard*/
+#activity-dashboard {
+  display: flex;
+  margin-left: 35px;
+  gap: 100px;
+  margin-right: auto;
+}
+
+/*ActivityFilter*/
+.activity-filter {
+  width: 350px;
+}
+#activity-filter-list {
+  margin-bottom: 100px;
+}
+
+/*ActivityListItem*/
+#activity-list-card {
+  margin-bottom: 60px;
+  border-radius: 15px;
+  border-width: 2px;
+}
+.card-title {
+  display: flex;
+  gap: 20px;
+}
+.user-png {
+  height: 100px;
+  border-radius: 50%;
+}
+
+/*ActivityCard*/
+#detail-image-container {
+  position: relative;
+}
+#detail-image {
+  opacity: 0.4;
+}
+#image-text {
+  color: whitesmoke;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+/*ActivityInfos*/
+#activity-infos {
+  margin-top: 30px;
+}
+#detail-infos-item {
+  background-color: rgb(187, 199, 199);
+}
+
+/*ActivityComments*/
+#comment-section {
+  margin-top: 25px;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
+  background-color: rgb(61, 77, 77);
+  padding: 50px;
+  border-radius: 15px;
+}
+#comment-header {
+  background-color: rgb(22, 61, 92);
+  height: 75px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding-top: 20px;
+  font-size: larger;
+  color: azure;
+}
+#comment {
+  height: 200px;
+  background-color: rgb(203, 204, 204);
+}
+#comment-image {
+  border-radius: 50%;
+  height: 160px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+/*ActivitySidebar*/
+#sidebar-header {
+  text-align: center;
+  color: aliceblue;
+  margin-top: 15px;
+  font-size: larger;
+  background-color: rgb(116, 9, 9);
+  height: 50px;
+  padding-top: 10px;
+  border-radius: 15px;
+}
+#sidebar-image {
+  height: 150px;
+  border-radius: 15px;
+}
+#sidebar-user {
+  margin-top: 20px;
+  display: flex;
+  background-color: rgb(199, 195, 192);
+  border-radius: 15px;
+}
+
+/*ActivityForm*/
+#form {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: px;
+  padding: 30px;
+  width: 1000px;
+}
+/*MyDateInput*/
+.react-datepicker-wrapper {
+  width: 100%;
+  z-index: 100;
+}
+
+.react-datepicker-wrapper input {
+  width: 100%;
+  border-width: 1px;
+  border-style: double;
+  border-color: rgb(226, 221, 221);
+}
+
+#text-input {
+  z-index: -100;
+}

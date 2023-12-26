@@ -1,0 +1,129 @@
+/*HomePage */
+#home-page {
+  height: 100vh;
+  background-color: rgb(37, 33, 41);
+  color: antiquewhite;
+  padding: 250px;
+  text-align: center;
+}
+#home-page h1 {
+  font-size: 100px;
+  margin-bottom: 75px;
+}
+#home-page img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+/*NavBar*/
+#navBar {
+  background-color: rgb(99, 90, 109);
+  height: 100px;
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#navBar h4 {
+  padding-top: 10px;
+}
+/*MoviesPage*/
+#movies-page {
+  background-color: rgb(37, 33, 41);
+  padding-bottom: 15px;
+  display: flex;
+}
+#movies {
+  width: 75%;
+  height: fit-content;
+}
+
+/*MovieCard*/
+#movie-card {
+  margin-left: 60px;
+  margin-top: 25px;
+  width: 45%;
+  display: inline-flex;
+  background-color: rgb(20, 14, 29);
+  color: antiquewhite;
+  border-radius: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#movie-card-desc {
+  margin-bottom: 150px;
+}
+#movie-card-button {
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+}
+/*Categories*/
+#categories {
+  width: fit-content;
+  background-color: rgb(39, 31, 53);
+  height: fit-content;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*Category*/
+#category-list {
+  color: aliceblue;
+  list-style: none;
+  padding: 45px;
+  width: fit-content;
+}
+#category-list ul {
+  padding: 20px;
+}
+#category-links {
+  text-decoration: none;
+  color: beige;
+  font-size: 25px;
+  width: fit-content;
+}
+#category-list li {
+  list-style: none;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+/*CategoryPage*/
+#category-page {
+  background-color: rgb(37, 33, 41);
+  padding-bottom: 15px;
+  display: flex;
+  min-height: 100vh;
+}
+/*MoviePage*/
+#movie-page {
+  background-color: rgb(37, 33, 41);
+  color: aliceblue;
+}
+
+/*MovieInfos*/
+#movie-infos {
+  padding-top: 50px;
+  padding-left: 50px;
+  width: 75%;
+  display: flex;
+  height: 100vh;
+}
+#movie-infos-header button {
+  display: block;
+  border-radius: 50px;
+}
+#movie-infos img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+}
+#movie-infos-list {
+  margin-top: 130px;
+  margin-left: 50px;
+  height: fit-content;
+  list-style: none;
+  font-size: x-large;
+}
+#movie-infos-header h4 {
+  width: fit-content;
+}

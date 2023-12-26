@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positions</title>
+
+    <style>
+        .kutu {
+            width: 150px;
+            height: 150px;
+        }
+
+        #kutu1 {
+            background-color: lightcoral;
+            position: relative;
+            top: 500px;
+            left: 500px;
+        }
+
+        #kutu2 {
+            background-color: lightseagreen;
+            position: absolute;
+            top: 600px;
+            left: 100px;
+        }
+
+        #kutu3 {
+            background-color: lightsteelblue;
+            position: absolute;
+          
+            top: 450px;
+            left: 50px;
+        }
+
+        #kutu4 {
+            background-color: red;
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+        }
+
+        #baslik {
+            background-color:  chartreuse;
+            width: auto;
+            height: 200px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+
+        }
+
+        /* relative divin kendi konumuna göre pozisyon almayın sağlarken
+            absolute sayfanın kenarlarına göre pozisyon almayı sağlıyor */
+    </style>
+</head>
+
+<body>
+    <div class="kutu" id="baslik">
+        <h1>BASLIK</h1>
+    </div>
+    <div class="kutu" id="kutu1">Kutu 1</div>
+    <div class="kutu" id="kutu2">Kutu 2</div>
+    <div class="kutu" id="kutu3">Kutu 3</div>
+    <div class="kutu" id="kutu4">Kutu 4</div>
+    <div style="height: 3000px;"></div>
+
+
+
+
+</body>
+
+</html>

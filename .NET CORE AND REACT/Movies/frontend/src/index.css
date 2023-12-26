@@ -1,0 +1,170 @@
+.body {
+  background-color: rgb(37, 33, 41);
+  color: aliceblue;
+}
+
+/*HomePage */
+#home-page {
+  height: 100vh;
+  padding: 250px;
+  text-align: center;
+}
+#home-page h1 {
+  font-size: 100px;
+  margin-bottom: 75px;
+}
+#home-page img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+/*NavBar*/
+#navBar {
+  background-color: rgb(99, 90, 109);
+  height: 100px;
+  font-size: larger;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#navBar h4 {
+  padding-top: 10px;
+}
+/*MoviesPage*/
+#movies-page {
+  padding-bottom: 15px;
+  display: flex;
+}
+#movies {
+  height: fit-content;
+  width: 75%;
+  margin-right: 100px;
+}
+
+/*MovieCard*/
+#movie-card {
+  margin-left: 60px;
+  margin-top: 25px;
+  width: 45%;
+  display: inline-flex;
+  background-color: rgb(20, 14, 29);
+  color: antiquewhite;
+  border-radius: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#movie-card img {
+  height: 400px;
+}
+#movie-card-desc {
+  margin-bottom: 150px;
+  height: 50px;
+}
+#movie-card-button {
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+}
+/*Categories*/
+#categories {
+  width: fit-content;
+  background-color: rgb(43, 38, 49);
+  height: fit-content;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-right: 100px;
+}
+/*Category*/
+#category-list {
+  list-style: none;
+  padding: 45px;
+  width: fit-content;
+}
+#category-list ul {
+  padding: 20px;
+}
+#category-links {
+  text-decoration: none;
+  color: beige;
+  font-size: 25px;
+  width: fit-content;
+}
+#category-list li {
+  list-style: none;
+  width: fit-content;
+  margin-bottom: 15px;
+}
+/*CategoryPage*/
+#category-page {
+  padding-bottom: 15px;
+  display: flex;
+  min-height: 100vh;
+}
+/*MoviePage*/
+#movie-page {
+  color: aliceblue;
+}
+
+/*MovieInfos*/
+#movie-infos {
+  padding-top: 50px;
+  padding-left: 50px;
+  width: 75%;
+  display: flex;
+  height: 100vh;
+}
+#movie-infos-header button {
+  display: block;
+  border-radius: 50px;
+}
+#movie-infos img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+}
+#movie-infos-list {
+  margin-top: 130px;
+  margin-left: 50px;
+  height: fit-content;
+  list-style: none;
+  font-size: x-large;
+}
+#movie-infos-header h4 {
+  width: fit-content;
+}
+
+/*CreateMovie*/
+.create-movie {
+  background-color: rgb(37, 33, 41);
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+}
+.create-movie h1 {
+  padding-top: 25px;
+  margin-bottom: 25px;
+}
+
+/*MovieForm*/
+.movie-form input {
+  width: 35rem;
+  border: none;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+.movie-form label {
+  color: rgb(201, 134, 523, 62);
+}
+.movie-form label div {
+  text-align: start;
+}
+.link-button {
+  width: 35rem;
+  margin-top: 15px;
+}
+.movie-form textarea {
+  width: 35rem;
+  border: none;
+  border-radius: 15px;
+  margin-top: 10px;
+  height: 125px;
+}

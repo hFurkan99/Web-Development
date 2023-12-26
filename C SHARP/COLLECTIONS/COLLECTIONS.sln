@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "arrays_foreach", "arrays_foreach\arrays_foreach.csproj", "{C6222086-4F8B-4C42-8A29-A5131425F825}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dictionaryPractice", "dictionaryPractice\dictionaryPractice.csproj", "{65A139DE-5CE8-404F-AF8E-69D12133EB2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hashtables", "hashtables\hashtables.csproj", "{E6CB8BBE-3343-4753-A36D-81A392E6AB4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jaggedArrays", "jaggedArrays\jaggedArrays.csproj", "{607183A0-CA77-498E-9FCD-27781F5AC648}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lists", "lists\lists.csproj", "{BC293032-592D-4C80-A4D7-CF9669224F32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nestedLoopsAnd2dArrays", "nestedLoopsAnd2dArrays\nestedLoopsAnd2dArrays.csproj", "{7526CDC0-86D6-46B6-B33F-0BF864B895A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ticTacToe_winnerIdentifer", "ticTacToe_winnerIdentifer\ticTacToe_winnerIdentifer.csproj", "{1024A3EC-B593-4C4C-AAA4-7B3FCB13C050}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6222086-4F8B-4C42-8A29-A5131425F825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6222086-4F8B-4C42-8A29-A5131425F825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6222086-4F8B-4C42-8A29-A5131425F825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6222086-4F8B-4C42-8A29-A5131425F825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65A139DE-5CE8-404F-AF8E-69D12133EB2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A139DE-5CE8-404F-AF8E-69D12133EB2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A139DE-5CE8-404F-AF8E-69D12133EB2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A139DE-5CE8-404F-AF8E-69D12133EB2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CB8BBE-3343-4753-A36D-81A392E6AB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CB8BBE-3343-4753-A36D-81A392E6AB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CB8BBE-3343-4753-A36D-81A392E6AB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB8BBE-3343-4753-A36D-81A392E6AB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607183A0-CA77-498E-9FCD-27781F5AC648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607183A0-CA77-498E-9FCD-27781F5AC648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607183A0-CA77-498E-9FCD-27781F5AC648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607183A0-CA77-498E-9FCD-27781F5AC648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC293032-592D-4C80-A4D7-CF9669224F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC293032-592D-4C80-A4D7-CF9669224F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC293032-592D-4C80-A4D7-CF9669224F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC293032-592D-4C80-A4D7-CF9669224F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7526CDC0-86D6-46B6-B33F-0BF864B895A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7526CDC0-86D6-46B6-B33F-0BF864B895A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7526CDC0-86D6-46B6-B33F-0BF864B895A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7526CDC0-86D6-46B6-B33F-0BF864B895A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1024A3EC-B593-4C4C-AAA4-7B3FCB13C050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1024A3EC-B593-4C4C-AAA4-7B3FCB13C050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1024A3EC-B593-4C4C-AAA4-7B3FCB13C050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1024A3EC-B593-4C4C-AAA4-7B3FCB13C050}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02CE70ED-2AD6-4C31-9BEA-0239C22D2C0F}
+	EndGlobalSection
+EndGlobal

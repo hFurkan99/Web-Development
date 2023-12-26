@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> formsApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/formsApp.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar bg-primary p-5" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/home/Index" style="color: white; font-size: 50px;">Teknoloji Gezegeni</a>
+                <form class="d-flex" asp-action="Index" method="get">
+                    <input class="form-control me-2" type="search" value="@ViewBag.searchString" name="searchString"
+                        placeholder="Anahtar Kelime Giriniz" />
+                    <button class="btn btn-success" type="submit">Ara</button>
+                </form>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container mt-5">
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

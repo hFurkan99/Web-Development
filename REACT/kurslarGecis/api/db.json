@@ -1,0 +1,42 @@
+{
+    "courses":[
+        {
+            "id" : 1,
+            "content" : "Genel kurullarının yönetimlerden bazı taleplerde bulunması gerektiğini söyleyen Timur, Tüm borcumuzu bitirecek ve bizi ilk 10 kulüp arasına sokacak projeleri ve hangi kaynakla geliştireceklerini istememiz lazım. Üst düzey şeffaflık için aylık bilgilendirme toplantılarının tüzükte yer almasını talep edelim. Şeffaflık olunca manipülasyon da azalır. Bir de iştirak şirketleri dahil tüm yönetim kurulu üyelerinin, her bilanço döneminde performans hedeflerinin belirlenmesi, üç ayda bir yönetici performans raporunun yayınlanması lazım. Her yöneticinin bir hedefi olması lazım. Bu üç başlığı değiştirebilirsek, sürdürebilirliğe çok katkısı olacaktır", 
+            "title" : "HTML KURSU",
+            "price" : 70
+        },
+
+        {
+            "id" : 2,
+            "content" : "Genel kurullarının yönetimlerden bazı taleplerde bulunması gerektiğini söyleyen Timur, Tüm borcumuzu bitirecek ve bizi ilk 10 kulüp arasına sokacak projeleri ve hangi kaynakla geliştireceklerini istememiz lazım. Üst düzey şeffaflık için aylık bilgilendirme toplantılarının tüzükte yer almasını talep edelim. Şeffaflık DSAFA SDFASD DSD SADSF DSAFAD SFADSo lunSDA FASDF ASDa ma nipDSAFS DDSüla ASD JFKH AJL SKD FHJ KSD HFsyon da azalır. Bir de iştirak şirketleri dahil tüm yönetim kurulu üyelerinin, her bilanço döneminde performans hedeflerinin belirlenmesi, üç ayda bir yönetici performans raporunun yayınlanması lazım. Her yöneticinin bir hedefi olması lazım. Bu üç başlığı değiştirebilirsek, sürdürebilirliğe çok katkısı olacaktır", 
+            "title" : "React Kursu",
+            "price" : 100
+            
+        },
+
+        {
+            "id" : 3,
+            "content" : "GASDFASDFSDFSDSDFDSFSADenel kurullarınıSDAHFJKHSDFLJKHSKDFSDn yönetimlerden bazı taleplerde bulunması gerektiğini söyleyen Timur, Tüm borcumuzu bitirecek ve bizi ilk 10 kulüp arasına sokacak projeleri ve hangi kaynakla geliştireceklerini istememiz lazım. Üst düzey şeffaflık için aylık bilgilendirme toplantılarının tüzükte yer almasını talep edelim. Şeffaflık olunca manipülasyon da azalır. Bir de iştirak şirketleri dahil tüm yönetim kurulu üyelerinin, her bilanço döneminde performans hedeflerinin belirlenmesi, üç ayda bir yönetici performans raporunun yayınlanması lazım. Her yöneticinin bir hedefi olması lazım. Bu üç başlığı değiştirebilirsek, sürdürebilirliğe çok katkısı olacaktır", 
+            "title" : "Net Core Kursu",
+            "price" : 80
+        },
+
+        {
+            "id" : 4,
+            "content" : "Genel kurullarının yönetimlerden bazı taleplerde bulunması gerektiğini söyleyen Timur, Tüm borcumuzu bitirecek ve bizi ilk 10 kulüp arasına sokacak projeleri ve hangi kaynakla geliştireceklerini istememiz lazım. Üst düzey şeffaflık için aylık bilgilendirme toplantılarının tüzükte yer almasını talep edelim. Şeffaflık olunca manipülasyon da azalır. Bir de iştirak şirketleri dahil tüm yönetim kurulu üyelerinin, her bilanço döneminde performans hedeflerinin belirlenmesi, üç ayda bir yönetici performans raporunun yayınlanması lazım. Her yöneticinin bir hedefi olması lazım. Bu üç başlığı değiştirebilirsek, sürdürebilirliğe çok katkısı olacaktSADHGFHKJSDGFHJSGDHGSDHır", 
+            "title" : "Fullstack Kursu",
+            "price" : 350
+        },
+
+        {
+            "id" : 5,
+            "content" : "Alperenbnebotperen zaaa xdGenel kurullarının yönetimlerden bazı taleplerde bulunması gerektiğini söyleyen Timur, Tüm borcumuzu bitirecek ve bizi ilk 10 kulüp arasına sokacak projeleri ve hangi kaynakla geliştireceklerini istememiz lazım. Üst düzey şeffaflık için aylık bilgilendirme toplantılarının tüzükte yer almasını talep edelim. Şeffaflık olunca manipülasyon da azalır. Bir de iştirak şirketleri dahil tüm yönetim kurulu üyelerinin, her bilanço döneminde performans hedeflerinin belirlenmesi, üç ayda bir yönetici performans raporunun yayınlanması lazım. Her yöneticinin bir hedefi olması lazım. Bu üç başlığı değiştirebilirsek, sürdürebilirliğe çok katkısı olacaktSADHGFHKJSDGFHJSGDHGSDHır", 
+            "title" : "Alperenin okul gezisi",
+            "price" : 1500
+        }
+
+
+
+    ]
+}
