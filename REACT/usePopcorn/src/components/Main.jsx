@@ -1,10 +1,13 @@
-import MovieBox from "./MovieBox";
 import WatchedBox from "./WatchedBox";
+import { tempWatchedData } from "../data/WatchedData";
+import { useState } from "react";
 
-function Main({ movies, watched }) {
+function Main({ children }) {
+  const [watched, setWatched] = useState(tempWatchedData);
+
   return (
     <main className="main">
-      <MovieBox movies={movies} />
+      {children}
       <WatchedBox watched={watched} />
     </main>
   );
