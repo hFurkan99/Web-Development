@@ -11,6 +11,7 @@ export class TodoComponent {
 
   displayAll: boolean = false;
   errorMsg: string = '';
+  inputText: string = '';
   model = new Model();
 
   // private name = 'Furkan';
@@ -26,15 +27,15 @@ export class TodoComponent {
     else return this.model.items.filter((item) => !item.action);
   }
 
-  addItem(value: string) {
+  addItem() {
     let length = this.model.items.length;
-    if (value !== '') {
-      console.log(value);
+    if (this.inputText !== '') {
       this.model.items.push({
         id: length + 1,
-        description: value,
+        description: this.inputText,
         action: false,
       });
+      this.inputText = '';
     } else {
       this.errorMsg = 'Yapılacak bir iş giriniz!';
     }
@@ -46,6 +47,14 @@ export class TodoComponent {
 
   getCompletedTaskCount() {
     return this.model.items.filter((item) => item.action === true).length;
+  }
+
+  getBtnClasses() {
+    return {
+      disabled: this.inputText.length === 0,
+      'btn-secondary': this.inputText.length === 0,
+      'btn-primary': this.inputText.length > 0,
+    };
   }
 
   // items: TodoItem[] = [

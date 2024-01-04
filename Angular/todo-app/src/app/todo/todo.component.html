@@ -7,9 +7,9 @@
 
 
             <div class="input-group mb-3">
-                <input (keypress)="handleStartWriting()" #txtItem type="text"
-                    (keyup.enter)=" addItem(txtItem.value); ; txtItem.value=''" class=" form-control">
-                <button (click)="addItem(txtItem.value); txtItem.value='' " class="btn btn-outline-primary">Add</button>
+                <input [(ngModel)]="inputText" (keypress)="handleStartWriting()" type="text" (keyup.enter)=" addItem()"
+                    class=" form-control">
+                <button [class]="getBtnClasses()" (click)="addItem()" class="btn">Add</button>
             </div>
             <p>{{errorMsg}} </p>
 
@@ -33,8 +33,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of getItems(); let i = index">
-                            <td>{{i + 1}} </td>
+                        <tr c *ngFor=" let item of getItems(); let i=index">
+                            <td class="{{ item.action ? 'dogru' : 'yanlis' }}">{{i + 1}} </td>
                             <td>{{item.description}} </td>
                             <td>
                                 <!-- <div *ngIf="item.action">Yapıldı</div>
