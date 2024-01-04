@@ -9,6 +9,7 @@ import { Model } from '../model';
 export class TodoComponent {
   constructor() {}
 
+  error = '';
   model = new Model();
 
   // private name = 'Furkan';
@@ -21,6 +22,23 @@ export class TodoComponent {
 
   getItems() {
     return this.model.items;
+  }
+
+  addItem(value: string) {
+    if (value !== '') {
+      console.log(value);
+      this.model.items.push({
+        id: length + 1,
+        description: value,
+        action: 'no',
+      });
+    } else {
+      this.error = 'Yapılacak bir iş giriniz!';
+    }
+  }
+
+  handleStartWriting() {
+    this.error = '';
   }
 
   // items: TodoItem[] = [

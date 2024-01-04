@@ -7,10 +7,11 @@
 
 
             <div class="input-group mb-3">
-                <input type="text" class="form-control">
-                <button class="btn btn-outline-primary">Add</button>
+                <input (keypress)="handleStartWriting()" #txtItem type="text"
+                    (keyup.enter)=" addItem(txtItem.value); ; txtItem.value=''" class=" form-control">
+                <button (click)="addItem(txtItem.value); txtItem.value='' " class="btn btn-outline-primary">Add</button>
             </div>
-
+            <p>{{error}} </p>
 
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" name="" id="displayAll">
@@ -28,6 +29,7 @@
                 <tbody>
                     <tr *ngFor="let item of getItems(); let i = index">
                         <th>{{i + 1}} </th>
+
                         <th>{{item.description}} </th>
                         <th>{{item.action}} </th>
                     </tr>
