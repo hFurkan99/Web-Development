@@ -44,6 +44,10 @@ export class TodoComponent {
     this.errorMsg = '';
   }
 
+  getCompletedTaskCount() {
+    return this.model.items.filter((item) => item.action === true).length;
+  }
+
   // items: TodoItem[] = [
   //   //Interface ile tip kontrolü yapılırsa
   //   { id: 1, description: 'Kahvaltı', action: 'yes' },
