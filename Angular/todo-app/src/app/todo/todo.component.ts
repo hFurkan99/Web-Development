@@ -9,7 +9,8 @@ import { Model } from '../model';
 export class TodoComponent {
   constructor() {}
 
-  error = '';
+  displayAll: boolean = false;
+  errorMsg: string = '';
   model = new Model();
 
   // private name = 'Furkan';
@@ -21,24 +22,26 @@ export class TodoComponent {
   }
 
   getItems() {
-    return this.model.items;
+    if (this.displayAll) return this.model.items;
+    else return this.model.items.filter((item) => !item.action);
   }
 
   addItem(value: string) {
+    let length = this.model.items.length;
     if (value !== '') {
       console.log(value);
       this.model.items.push({
         id: length + 1,
         description: value,
-        action: 'no',
+        action: false,
       });
     } else {
-      this.error = 'Yapılacak bir iş giriniz!';
+      this.errorMsg = 'Yapılacak bir iş giriniz!';
     }
   }
 
   handleStartWriting() {
-    this.error = '';
+    this.errorMsg = '';
   }
 
   // items: TodoItem[] = [
