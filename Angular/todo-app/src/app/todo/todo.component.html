@@ -1,67 +1,82 @@
 <div class="container m-2 p-2">
-    <div class="row">
-        <div class="col-5 mx-auto">
-            <h3 class="bg-primary text-white p-3">
-                {{getName()}}'s List
-            </h3>
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h3 class="bg-primary text-white p-3">{{ getName() }}'s List</h3>
 
+      <div class="input-group mb-3">
+        <input
+          [(ngModel)]="inputText"
+          (keypress)="handleStartWriting()"
+          type="text"
+          (keyup.enter)="addItem()"
+          class="form-control"
+        />
+        <button [class]="getBtnClasses()" (click)="addItem()" class="btn">
+          Add
+        </button>
+      </div>
+      <p>{{ errorMsg }}</p>
 
-            <div class="input-group mb-3">
-                <input [(ngModel)]="inputText" (keypress)="handleStartWriting()" type="text" (keyup.enter)=" addItem()"
-                    class=" form-control">
-                <button [class]="getBtnClasses()" (click)="addItem()" class="btn">Add</button>
-            </div>
-            <p>{{errorMsg}} </p>
+      <div class="form-check mb-3">
+        <input
+          type="checkbox"
+          [(ngModel)]="displayAll"
+          class="form-check-input"
+          name=""
+          id="displayAll"
+        />
+        <label for="displayAll" class="form-check-label"
+          >Tamamlanan görevleri de göster</label
+        >
+      </div>
 
-            <div class="form-check mb-3">
-                <input type="checkbox" [(ngModel)]="displayAll" class="form-check-input" name="" id="displayAll">
-                <label for="displayAll" class="form-check-label">Tamamlanan görevleri de göster</label>
-            </div>
+      <div
+        class="alert alert-warning"
+        *ngIf="getItems().length === 0; else items"
+      >
+        Tüm görevleri tamamladınız 😆 Tamamlanan görev sayısı:
+        {{ getCompletedTaskCount() }}
+      </div>
 
-
-            <div class="alert alert-warning" *ngIf="getItems().length===0 else items ">
-                Tüm görevleri tamamladınız 😆 Tamamlanan görev sayısı: {{getCompletedTaskCount()}}
-            </div>
-
-            <ng-template #items>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr c *ngFor=" let item of getItems(); let i=index">
-                            <td class="{{ item.action ? 'dogru' : 'yanlis' }}">{{i + 1}} </td>
-                            <td>{{item.description}} </td>
-                            <td>
-                                <!-- <div *ngIf="item.action">Yapıldı</div>
+      <ng-template #items>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr c *ngFor="let item of getItems(); let i = index">
+              <td class="{{ item.action ? 'dogru' : 'yanlis' }}">
+                {{ item.id }}
+              </td>
+              <td>{{ item.description }}</td>
+              <td>
+                <!-- <div *ngIf="item.action">Yapıldı</div>
                                             <div *ngIf="!item.action">Yapılmadı</div> -->
 
-                                <div [ngSwitch]="item.action">
-                                    <div *ngSwitchCase="true">Yapıldı</div>
+                <div [ngSwitch]="item.action">
+                  <div *ngSwitchCase="true">Yapıldı</div>
 
-                                    <div *ngSwitchDefault>Yapılmadı</div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="checkbox" [(ngModel)]="item.action">
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-                <div class="my-2">
-                    {{getCompletedTaskCount()}} Adet Görev Tamamladınız 💪
+                  <div *ngSwitchDefault>Yapılmadı</div>
                 </div>
-            </ng-template>
-
-
-
-
-
+              </td>
+              <td>
+                <input
+                  (change)="onActionChange(item)"
+                  type="checkbox"
+                  [(ngModel)]="item.action"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-2">
+          {{ getCompletedTaskCount() }} Adet Görev Tamamladınız 💪
         </div>
+      </ng-template>
     </div>
+  </div>
 </div>

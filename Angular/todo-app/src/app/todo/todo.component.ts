@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Model } from '../model';
+import { TodoItem } from '../todoitem';
 
 @Component({
   selector: 'todo-app',
@@ -7,7 +8,9 @@ import { Model } from '../model';
   styleUrl: './todo.component.css',
 })
 export class TodoComponent {
-  constructor() {}
+  constructor() {
+    this.model.items = this.getItemsFormLS();
+  }
 
   displayAll: boolean = false;
   errorMsg: string = '';
@@ -22,31 +25,24 @@ export class TodoComponent {
     return this.model.name;
   }
 
-  getItems() {
-    if (this.displayAll) return this.model.items;
-    else return this.model.items.filter((item) => !item.action);
-  }
-
-  addItem() {
-    let length = this.model.items.length;
-    if (this.inputText !== '') {
-      this.model.items.push({
-        id: length + 1,
-        description: this.inputText,
-        action: false,
-      });
-      this.inputText = '';
-    } else {
-      this.errorMsg = 'Yapılacak bir iş giriniz!';
-    }
-  }
-
   handleStartWriting() {
     this.errorMsg = '';
   }
 
-  getCompletedTaskCount() {
-    return this.model.items.filter((item) => item.action === true).length;
+  addItem() {
+    let length = this.model.items.length + 1;
+    if (this.inputText !== '') {
+      let data = { id: length, description: this.inputText, action: false };
+      this.model.items.push(data);
+
+      let items = this.getItemsFormLS();
+      items.push(data);
+      localStorage.setItem('items', JSON.stringify(items));
+
+      this.inputText = '';
+    } else {
+      this.errorMsg = 'Yapılacak bir iş giriniz!';
+    }
   }
 
   getBtnClasses() {
@@ -55,6 +51,35 @@ export class TodoComponent {
       'btn-secondary': this.inputText.length === 0,
       'btn-primary': this.inputText.length > 0,
     };
+  }
+
+  getItems() {
+    if (this.displayAll) return this.model.items;
+    else return this.model.items.filter((item) => !item.action);
+  }
+
+  getCompletedTaskCount() {
+    return this.model.items.filter((item) => item.action === true).length;
+  }
+
+  getItemsFormLS() {
+    let items: TodoItem[] = [];
+    let value = localStorage.getItem('items');
+    if (value !== null) items = JSON.parse(value);
+
+    return items;
+  }
+
+  onActionChange(item: TodoItem) {
+    let items = this.getItemsFormLS();
+
+    localStorage.clear();
+
+    items.forEach((i) => {
+      if (i.id === item.id) i.action = item.action;
+    });
+
+    localStorage.setItem('items', JSON.stringify(items));
   }
 
   // items: TodoItem[] = [
