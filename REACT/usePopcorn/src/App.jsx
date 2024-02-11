@@ -10,12 +10,13 @@ import WatchedMovieList from "./components/WatchedMovieList";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import MovieDetails from "./components/MovieDetails";
+import { tempWatchedData } from "./data/WatchedData";
 
 const KEY = "8f0cd8b6";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(tempWatchedData);
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -64,6 +65,19 @@ export default function App() {
     setSelectedMovieId(null);
   };
 
+  const handleAddWatchedMovieList = (watchedMovie) => {
+    console.log(watched);
+    console.log(watchedMovie);
+    setWatched((prevWatched) => [...prevWatched, watchedMovie]);
+  };
+
+  const handleDeleteWatchedMovie = (selectedMovieId) => {
+    console.log(selectedMovieId);
+    setWatched((prevWatched) =>
+      prevWatched.filter((movie) => movie.imdbID != selectedMovieId)
+    );
+  };
+
   return (
     <>
       <Navbar>
@@ -83,12 +97,17 @@ export default function App() {
           {!selectedMovieId ? (
             <>
               <WatchedMovieSummary watched={watched} />
-              <WatchedMovieList watched={watched} />
+              <WatchedMovieList
+                watched={watched}
+                onDeleteWathcedMovie={handleDeleteWatchedMovie}
+              />
             </>
           ) : (
             <MovieDetails
               selectedMovieId={selectedMovieId}
               onCloseMoiveDetails={handleCloseMoiveDetails}
+              onAddWatchedMovieList={handleAddWatchedMovieList}
+              watchedMovies={watched}
             />
           )}
         </Box>

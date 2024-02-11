@@ -3,9 +3,16 @@ import StarRating from "./StarRating";
 import Loading from "./Loading";
 const KEY = "8f0cd8b6";
 
-function MovieDetails({ selectedMovieId, onCloseMoiveDetails }) {
+function MovieDetails({
+  selectedMovieId,
+  onCloseMoiveDetails,
+  onAddWatchedMovieList,
+  watchedMovies,
+}) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUserRating] = useState(0);
+  const [wasAdded, setWasAdded] = useState(false);
 
   const {
     Title: title,
@@ -22,15 +29,44 @@ function MovieDetails({ selectedMovieId, onCloseMoiveDetails }) {
   useEffect(() => {
     const getMovieDetails = async () => {
       setIsLoading(true);
+      setWasAdded(false);
+      setUserRating(0);
       const res = await fetch(
         `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedMovieId}`
       );
       const data = await res.json();
+      const watched = watchedMovies.find(
+        (movie) => movie.imdbID == selectedMovieId
+      );
+      if (watched) {
+        setUserRating(watched.userRating);
+        setWasAdded(true);
+      }
       setMovie(data);
       setIsLoading(false);
     };
     getMovieDetails();
-  }, [selectedMovieId]);
+  }, [selectedMovieId, watchedMovies]);
+
+  const handleAddWatchedMovieList = () => {
+    if (watchedMovies.find((movie) => movie.imdbID == selectedMovieId)) {
+      return;
+    }
+    const newWatchedMovie = {
+      imdbID: selectedMovieId,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: isNaN(Number(runtime.split(" ").at(0)))
+        ? 0
+        : Number(runtime.split(" ").at(0)),
+      userRating,
+    };
+
+    onAddWatchedMovieList(newWatchedMovie);
+    onCloseMoiveDetails();
+  };
 
   return (
     <div className="details">
@@ -58,7 +94,17 @@ function MovieDetails({ selectedMovieId, onCloseMoiveDetails }) {
 
           <section>
             <div className="rating">
-              <StarRating maxRating={10} size={30.1} />
+              <StarRating
+                maxRating={10}
+                size={25}
+                onSetRating={setUserRating}
+                defaultRating={userRating}
+              />
+              {userRating > 0 && !wasAdded && (
+                <button className="btn-add" onClick={handleAddWatchedMovieList}>
+                  ADD LIST
+                </button>
+              )}
             </div>
             <p>
               <em>{plot}</em>
