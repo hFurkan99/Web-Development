@@ -11,6 +11,7 @@ import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import MovieDetails from "./components/MovieDetails";
 import { tempWatchedData } from "./data/WatchedData";
+import NoPoster from ".././public/NoPoster.png";
 
 const KEY = "8f0cd8b6";
 
@@ -23,12 +24,15 @@ export default function App() {
   const [selectedMovieId, setSelectedMovieId] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchMovies() {
       try {
         setIsLoading(true);
-        setError(false);
+        setError("");
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+          { signal: controller.signal }
         );
         if (!res.ok) throw new Error("Failed to fetch!");
 
@@ -36,11 +40,18 @@ export default function App() {
         if (data.Response === "False") {
           throw new Error("Movie not found");
         }
-
-        setMovies(data.Search);
+        console.log(data.Search);
+        const withPosterForNoPosterDatas = data.Search.map((movie) => {
+          return {
+            ...movie,
+            Poster: movie.Poster === "N/A" ? NoPoster : movie.Poster,
+          };
+        });
+        setMovies(withPosterForNoPosterDatas);
+        setError("");
       } catch (error) {
         console.log(error);
-        setError(error.message);
+        if (error.name !== "AbortError") setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -53,6 +64,10 @@ export default function App() {
     }
 
     fetchMovies();
+
+    return () => {
+      controller.abort();
+    };
   }, [query]);
 
   const handleSelectMovieId = (id) => {
@@ -100,6 +115,7 @@ export default function App() {
               <WatchedMovieList
                 watched={watched}
                 onDeleteWathcedMovie={handleDeleteWatchedMovie}
+                onSelectMovieId={handleSelectMovieId}
               />
             </>
           ) : (

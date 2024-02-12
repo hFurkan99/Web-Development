@@ -1,6 +1,6 @@
-function WatchedMovie({ movie, onDeleteWathcedMovie }) {
+function WatchedMovie({ movie, onDeleteWathcedMovie, onSelectMovieId }) {
   return (
-    <li>
+    <li className="watchedMoive" onClick={() => onSelectMovieId(movie.imdbID)}>
       <img src={movie.poster} alt={`${movie.title} poster`} />
       <h3>{movie.title}</h3>
       <div>
