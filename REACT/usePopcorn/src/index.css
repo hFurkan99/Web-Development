@@ -338,6 +338,33 @@ body {
   align-items: center;
   justify-content: center;
 }
+.react-paginate {
+  padding-left: 120px;
+  padding-top: 20px;
+}
+
+.react-paginate li {
+  display: inline-block;
+  border: 1px solid rgb(224, 224, 224);
+  color: #000;
+  cursor: pointer;
+  margin-right: 3px;
+  border-radius: 5px;
+  margin-bottom: 0px;
+}
+
+.react-paginate li a {
+  font-size: larger;
+  padding: 2px 5px;
+  display: inline-block;
+  color: #ececec;
+  outline: none;
+}
+
+.react-paginate li.active {
+  background: rgb(224, 224, 224);
+  outline: none;
+}
 
 /*
 SPACING SYSTEM (px)

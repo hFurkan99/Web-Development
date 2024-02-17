@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import Loading from "./Loading";
 import NoPoster from "../../public/NoPoster.png";
+import { useKey } from "../hooks/useKey";
 
 const KEY = "8f0cd8b6";
 
@@ -15,6 +16,7 @@ function MovieDetails({
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
   const [wasAdded, setWasAdded] = useState(false);
+  useKey("Escape", onCloseMoiveDetails);
 
   const {
     Title: title,
@@ -63,18 +65,6 @@ function MovieDetails({
       document.title = "usePopcorn";
     };
   }, [title]);
-
-  useEffect(() => {
-    const callback = (e) => {
-      if (e.code === "Escape") onCloseMoiveDetails();
-    };
-
-    document.addEventListener("keydown", callback);
-
-    return () => {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [onCloseMoiveDetails]);
 
   const handleAddWatchedMovieList = () => {
     if (watchedMovies.find((movie) => movie.imdbID == selectedMovieId)) {
