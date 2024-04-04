@@ -2,102 +2,102 @@
 
 // Data needed for first part of the section
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-const openingHours = {
-  //tamamı entries
-  [weekdays[3]]: {
-    //key
-    open: 12, //value
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  //template literals kullanılıp içerisinde hesap da yapılabilir
-  [weekdays[5]]: {
-    //burda hesaplama yapılamazdı
-    open: 0, // Open 24 hours
-    close: 24,
-  },
-};
+// const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// const openingHours = {
+//   //tamamı entries
+//   [weekdays[3]]: {
+//     //key
+//     open: 12, //value
+//     close: 22,
+//   },
+//   [weekdays[4]]: {
+//     open: 11,
+//     close: 23,
+//   },
+//   //template literals kullanılıp içerisinde hesap da yapılabilir
+//   [weekdays[5]]: {
+//     //burda hesaplama yapılamazdı
+//     open: 0, // Open 24 hours
+//     close: 24,
+//   },
+// };
 
-const restaurant = {
-  Name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+// const restaurant = {
+//   Name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+//   order: function (starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
 
-  //ES6 enhanced object literals
-  openingHours,
+//   //ES6 enhanced object literals
+//   openingHours,
 
-  orderDelivery: function ({
-    starterIndex = 0,
-    mainIndex = 0,
-    address = 'Ankara',
-    time = '15.00',
-  }) {
-    console.log(
-      `Sipariş alındı! ${this.starterMenu[starterIndex]} ve ${this.mainMenu[mainIndex]}, ${address} adresine ${time} saatinde teslim edilecek.`
-    );
-  },
+//   orderDelivery: function ({
+//     starterIndex = 0,
+//     mainIndex = 0,
+//     address = 'Ankara',
+//     time = '15.00',
+//   }) {
+//     console.log(
+//       `Sipariş alındı! ${this.starterMenu[starterIndex]} ve ${this.mainMenu[mainIndex]}, ${address} adresine ${time} saatinde teslim edilecek.`
+//     );
+//   },
 
-  //ES6 enhanced object literals
-  orderPasta(ingredient1, ingredient2, ingredient3) {
-    console.log(
-      `Makarnanın malzemeleri: ${ingredient1}, ${ingredient2}, ${ingredient3}`
-    );
-  },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-    console.log('Tüm malzemeler:' + mainIngredient + ',' + otherIngredients);
-  },
-};
-// STRING METHODS PRACTICE
+//   //ES6 enhanced object literals
+//   orderPasta(ingredient1, ingredient2, ingredient3) {
+//     console.log(
+//       `Makarnanın malzemeleri: ${ingredient1}, ${ingredient2}, ${ingredient3}`
+//     );
+//   },
+//   orderPizza: function (mainIngredient, ...otherIngredients) {
+//     console.log(mainIngredient);
+//     console.log(otherIngredients);
+//     console.log('Tüm malzemeler:' + mainIngredient + ',' + otherIngredients);
+//   },
+// };
+// // STRING METHODS PRACTICE
 
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// 🔴 Delayed Departure from FAO to TXL (11h25)
-//              Arrival from BRU to FAO (11h45)
-//   🔴 Delayed Arrival from HEL to FAO (12h05)
-//            Departure from FAO to LIS (12h30)
+// // 🔴 Delayed Departure from FAO to TXL (11h25)
+// //              Arrival from BRU to FAO (11h45)
+// //   🔴 Delayed Arrival from HEL to FAO (12h05)
+// //            Departure from FAO to LIS (12h30)
 
-const cleanUpper = function (location) {
-  return location.slice(0, 3).toUpperCase();
-};
+// const cleanUpper = function (location) {
+//   return location.slice(0, 3).toUpperCase();
+// };
 
-const noPunctuationFlights = flights
-  .replaceAll('_', ' ')
-  .replaceAll('+', '\n')
-  .replaceAll(';', ' ')
-  .replaceAll(':', 'h');
-console.log(noPunctuationFlights);
-const splitFlights = noPunctuationFlights.split('\n');
-console.log(splitFlights);
-for (const line of splitFlights) {
-  const flight = line.trim().split(' ');
-  if (flight.length == 5) {
-    for (const [state, type, from, to, time] of [flight]) {
-      const newFrom = cleanUpper(from);
-      const newTo = cleanUpper(to);
-      console.log(
-        `🔴 ${state} ${type} from ${newFrom} to ${newTo} (${time})`.padStart(50)
-      );
-    }
-  } else {
-    for (const [type, from, to, time] of [flight]) {
-      const newFrom = cleanUpper(from);
-      const newTo = cleanUpper(to);
-      console.log(`${type} from ${newFrom} to ${newTo} (${time})`.padStart(50));
-    }
-  }
-}
+// const noPunctuationFlights = flights
+//   .replaceAll('_', ' ')
+//   .replaceAll('+', '\n')
+//   .replaceAll(';', ' ')
+//   .replaceAll(':', 'h');
+// console.log(noPunctuationFlights);
+// const splitFlights = noPunctuationFlights.split('\n');
+// console.log(splitFlights);
+// for (const line of splitFlights) {
+//   const flight = line.trim().split(' ');
+//   if (flight.length == 5) {
+//     for (const [state, type, from, to, time] of [flight]) {
+//       const newFrom = cleanUpper(from);
+//       const newTo = cleanUpper(to);
+//       console.log(
+//         `🔴 ${state} ${type} from ${newFrom} to ${newTo} (${time})`.padStart(50)
+//       );
+//     }
+//   } else {
+//     for (const [type, from, to, time] of [flight]) {
+//       const newFrom = cleanUpper(from);
+//       const newTo = cleanUpper(to);
+//       console.log(`${type} from ${newFrom} to ${newTo} (${time})`.padStart(50));
+//     }
+//   }
+// }
 
 //Hocanın Çözümü//
 /*
@@ -1053,3 +1053,20 @@ console.log(i, j, k, l);
 const [q = 1, w = 1, e = 2, r = 8] = [5, 6, 7];
 console.log(q, w, e, r);
 */
+
+const age = 15;
+if (age >= 18) console.log('Sarah can start driving license 🚗');
+else {
+  let deneme2 = 200;
+  var deneme = 100;
+  const yearsLeft = 18 - age;
+  // console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+
+}
+// console.log("let: " + deneme2);
+// deneme2 = 300;
+// deneme = 500;
+console.log("var: " + deneme);
+// console.log("let: " + deneme2);
+
+
