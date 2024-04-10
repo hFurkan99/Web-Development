@@ -2,7 +2,7 @@
 
 namespace Elasticsearch.API.Models
 {
-    public class PrdouctFeature
+    public class ProductFeature
     {
         public int? Width { get; set; }
         public int? Height { get; set; }
