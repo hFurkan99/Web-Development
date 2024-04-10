@@ -1,4 +1,5 @@
-﻿using Elasticsearch.API.Models;
+﻿using Elasticsearch.API.Enums;
+using Elasticsearch.API.Models;
 
 namespace Elasticsearch.API.DTOs
 {
@@ -7,6 +8,12 @@ namespace Elasticsearch.API.DTOs
 
         public Product CreateProduct()
         {
+            int colorValue = 1; // Default value in case Feature.Color is null or not a valid integer string
+            if (Feature.Color != null)
+            {
+                int.TryParse(Feature.Color, out colorValue);
+            }
+
             return new Product
             {
                 Name = Name,
@@ -16,7 +23,7 @@ namespace Elasticsearch.API.DTOs
                 {
                     Width = Feature.Width,
                     Height = Feature.Height,
-                    Color = Feature.Color,
+                    Color = (EColor)colorValue,
                 }
             };
         }

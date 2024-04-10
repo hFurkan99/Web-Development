@@ -6,7 +6,7 @@ namespace Elasticsearch.API.Models
     {
         public int? Width { get; set; }
         public int? Height { get; set; }
-        public EColor Color { get; set; }
+        public EColor? Color { get; set; }
 
     }
 }
