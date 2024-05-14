@@ -10,7 +10,7 @@ namespace Elasticsearch.API.Extensions
             var pool = new SingleNodeConnectionPool(new Uri(configuration.GetSection("Elastic")["Url"]!));
             var settings = new ConnectionSettings(pool);
             ////Kullanıcı adı ve şifre varsa 
-            //settings.BasicAuthentication((configuration.GetSection("Elastic")["Username"]), configuration.GetSection("Elastic")["Password"]);
+            settings.BasicAuthentication((configuration.GetSection("Elastic")["Username"]), configuration.GetSection("Elastic")["Password"]);
             var client = new ElasticClient(settings);
             services.AddSingleton(client);
         }
