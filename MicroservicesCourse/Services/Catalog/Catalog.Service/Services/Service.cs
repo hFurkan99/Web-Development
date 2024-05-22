@@ -1,6 +1,7 @@
 ﻿using Catalog.Core.Repositories;
 using Catalog.Core.Services;
 using Catalog.Core.UnitOfWorks;
+using Catalog.Service.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace Catalog.Service.Services
         {
             var hasProduct = await _repository.GetByIdAsync(id);
 
-            return hasProduct ?? throw new Exception("Not Found");
+            return hasProduct ?? throw new NotFoundExcepiton($"{typeof(T).Name}({id}) not found");
         }
 
         public async Task RemoveAsync(T entity)

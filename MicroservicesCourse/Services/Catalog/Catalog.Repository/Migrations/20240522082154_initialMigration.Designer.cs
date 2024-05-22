@@ -3,16 +3,16 @@ using System;
 using Catalog.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Catalog.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240520214551_initialMigration")]
+    [Migration("20240522082154_initialMigration")]
     partial class initialMigration
     {
         /// <inheritdoc />
@@ -21,28 +21,28 @@ namespace Catalog.Repository.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.19")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Catalog.Core.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -52,19 +52,19 @@ namespace Catalog.Repository.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3087),
+                            CreatedDate = new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(113),
                             Name = "React"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3089),
+                            CreatedDate = new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(116),
                             Name = ".Net Core"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3090),
+                            CreatedDate = new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(117),
                             Name = "EF Core"
                         });
                 });
@@ -73,35 +73,35 @@ namespace Catalog.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Picture")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -114,7 +114,7 @@ namespace Catalog.Repository.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3396),
+                            CreatedDate = new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(462),
                             Description = "Harika bir kurs",
                             Name = "Ugulamalı React Kursu",
                             Picture = "react.img",
@@ -125,7 +125,7 @@ namespace Catalog.Repository.Migrations
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3399),
+                            CreatedDate = new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(464),
                             Description = "Harika bir kurs",
                             Name = "Ugulamalı Dotnet Kursu",
                             Picture = "dotnet.img",
@@ -136,7 +136,7 @@ namespace Catalog.Repository.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3400),
+                            CreatedDate = new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(465),
                             Description = "Harika bir kurs",
                             Name = "Modern React Kursu",
                             Picture = "modernReact.img",
@@ -149,15 +149,15 @@ namespace Catalog.Repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CourseId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("Duration")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

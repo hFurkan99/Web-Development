@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,11 +17,11 @@ namespace Catalog.Repository.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -33,16 +32,16 @@ namespace Catalog.Repository.Migrations
                 name: "Courses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    Picture = table.Column<string>(type: "text", nullable: true),
-                    CategoryId = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,10 +58,10 @@ namespace Catalog.Repository.Migrations
                 name: "CourseFeatures",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Duration = table.Column<int>(type: "integer", nullable: false),
-                    CourseId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Duration = table.Column<int>(type: "int", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,9 +79,9 @@ namespace Catalog.Repository.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3087), "React", null },
-                    { 2, new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3089), ".Net Core", null },
-                    { 3, new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3090), "EF Core", null }
+                    { 1, new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(113), "React", null },
+                    { 2, new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(116), ".Net Core", null },
+                    { 3, new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(117), "EF Core", null }
                 });
 
             migrationBuilder.InsertData(
@@ -90,9 +89,9 @@ namespace Catalog.Repository.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Description", "Name", "Picture", "Price", "UpdatedDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 2, new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3396), "Harika bir kurs", "Ugulamalı React Kursu", "react.img", 156m, null, 1 },
-                    { 2, 3, new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3399), "Harika bir kurs", "Ugulamalı Dotnet Kursu", "dotnet.img", 256m, null, 1 },
-                    { 3, 2, new DateTime(2024, 5, 20, 21, 45, 51, 556, DateTimeKind.Utc).AddTicks(3400), "Harika bir kurs", "Modern React Kursu", "modernReact.img", 300m, null, 2 }
+                    { 1, 2, new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(462), "Harika bir kurs", "Ugulamalı React Kursu", "react.img", 156m, null, 1 },
+                    { 2, 3, new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(464), "Harika bir kurs", "Ugulamalı Dotnet Kursu", "dotnet.img", 256m, null, 1 },
+                    { 3, 2, new DateTime(2024, 5, 22, 8, 21, 54, 868, DateTimeKind.Utc).AddTicks(465), "Harika bir kurs", "Modern React Kursu", "modernReact.img", 300m, null, 2 }
                 });
 
             migrationBuilder.InsertData(

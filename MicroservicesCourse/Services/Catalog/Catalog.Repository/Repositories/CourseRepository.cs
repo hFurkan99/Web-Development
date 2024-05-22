@@ -24,5 +24,10 @@ namespace Catalog.Repository.Repositories
         {
             return await _context.Courses.Include(x => x.Category).ToListAsync();
         }
+
+        public async Task<List<Course>> GetCoursesWithFeatures()
+        {
+            return await _context.Courses.Include(x => x.CourseFeature).ToListAsync();
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace Catalog.Core.Repositories
     {
         Task<List<Course>> GetCoursesWithCategory();
         Task<List<Course>> GetCoursesByUserIdAsync(int userId);
+        Task<List<Course>> GetCoursesWithFeatures();
     }
 }
