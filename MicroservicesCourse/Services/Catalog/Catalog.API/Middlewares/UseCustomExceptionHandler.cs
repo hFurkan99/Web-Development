@@ -1,13 +1,12 @@
-﻿using Catalog.Core.DTOs;
-using Catalog.Service.Exceptions;
+﻿using Catalog.Service.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
+using Shared.DTOs;
 using System.Text.Json;
 
 namespace Catalog.API.Middlewares
 {
     public static class UseCustomExceptionHandler
     {
-
         public static void UseCustomException(this IApplicationBuilder app)
         {
             app.UseExceptionHandler(config =>

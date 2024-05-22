@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Catalog.Core.Models;
+using Shared.DTOs;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalog.Core.Services
 {
-    public interface IService<T> where T : class
+    public interface IService<Entity ,Dto> where Entity : BaseEntity where Dto : class
     {
-        Task<T> GetByIdAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
-        IQueryable<T> Where(Expression<Func<T, bool>> expression);
-        Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
-        Task<T> AddAsync(T entity);
-        Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
-        Task UpdateAsync(T entity);
-        Task RemoveAsync(T entity);
-        Task RemoveRangeAsync(IEnumerable<T> entities);
-
-
+        Task<CustomResponseDto<Dto>> GetByIdAsync(int id);
+        Task<CustomResponseDto<IEnumerable<Dto>>> GetAllAsync();
+        Task<CustomResponseDto<IEnumerable<Dto>>> Where(Expression<Func<Entity, bool>> expression);
+        Task<CustomResponseDto<bool>> AnyAsync(Expression<Func<Entity, bool>> expression);
+        Task<CustomResponseDto<Dto>> AddAsync(Dto dto);
+        Task<CustomResponseDto<IEnumerable<Dto>>> AddRangeAsync(IEnumerable<Dto> dtos);
+        Task<CustomResponseDto<NoContentDto>> UpdateAsync(Dto dto);
+        Task<CustomResponseDto<NoContentDto>> RemoveAsync(int id);
+        Task<CustomResponseDto<NoContentDto>> RemoveRangeAsync(IEnumerable<int> ids);
     }
 }

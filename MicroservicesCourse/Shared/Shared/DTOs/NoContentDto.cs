@@ -1,6 +1,6 @@
 ﻿
 
-namespace Catalog.Core.DTOs
+namespace Shared.DTOs
 {
     public class NoContentDto
     {

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Catalog.Core.DTOs
 {
-    public class ErrorViewModel
+    public class CategoryCreateDto
     {
-        public List<string>? Errors { get; set; } = new List<string>();
+        public string name { get; set; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Catalog.Core.DTOs;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Shared.DTOs;
 
-namespace Catalog.API.Controllers
+namespace Shared.ControllerBases
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

@@ -1,25 +1,21 @@
-﻿using AutoMapper;
-using Catalog.Core.DTOs;
-using Catalog.Core.Models;
+﻿using Catalog.Core.DTOs;
 using Catalog.Core.Services;
-using Catalog.Service.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using Shared.ControllerBases;
 
 namespace Catalog.API.Controllers
 {
     public class CoursesController : CustomBaseController
     {
         private readonly ICourseService _courseService;
-        private readonly IMapper _mapper;
 
-        public CoursesController(ICourseService courseService, IMapper mapper)
+        public CoursesController(ICourseService courseService)
         {
             _courseService = courseService;
-            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCoursesWithCategory() 
+        public async Task<IActionResult> GetCoursesWithCategories()
         {
             return CreateActionResult(await _courseService.GetCoursesWithCategory());
         }
@@ -27,46 +23,49 @@ namespace Catalog.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCourses()
         {
-            var courses = await _courseService.GetAllAsync();
-            var coursesDto = _mapper.Map<List<CourseDto>>(courses);
-            return CreateActionResult(CustomResponseDto<List<CourseDto>>.Success(200, coursesDto));
+            return CreateActionResult(await _courseService.GetAllAsync());
         }
 
         [HttpGet]
         public async Task<IActionResult> GetCourseById(int id)
         {
-            var course = await _courseService.GetByIdAsync(id);
-            var courseDto = _mapper.Map<CourseDto>(course);
-            return CreateActionResult(CustomResponseDto<CourseDto>.Success(200, courseDto));
+            return CreateActionResult(await _courseService.GetByIdAsync(id));
         }
 
         [HttpPost]
-        public async Task<IActionResult> CourseSave(CourseCreateDto courseCreateDto)
+        public async Task<IActionResult> SaveCourse(CourseCreateDto courseCreateDto)
         {
-            var course = await _courseService.AddAsync(_mapper.Map<Course>(courseCreateDto));
-            var courseDto = _mapper.Map<CourseDto>(course);
-            return CreateActionResult(CustomResponseDto<CourseDto>.Success(201, courseDto));
+            return CreateActionResult(await _courseService.AddCourseAsync(courseCreateDto));
         }
 
         [HttpPost]
-        public async Task<IActionResult> CourseUpdate(CourseUpdateDto courseUpdateDto)
+        public async Task<IActionResult> UpdateCourse(CourseUpdateDto courseUpdateDto)
         {
-            await _courseService.UpdateAsync(_mapper.Map<Course>(courseUpdateDto));
-            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+            return CreateActionResult(await _courseService.UpdateCourseAsync(courseUpdateDto));
         }
 
         [HttpGet]
-        public async Task<IActionResult> CourseRemove(int courseId)
+        public async Task<IActionResult> RemoveCourse(int id)
         {
-            var course = await _courseService.GetByIdAsync(courseId);
-            await _courseService.RemoveAsync(course);
-            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+            return CreateActionResult(await _courseService.RemoveAsync(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveRangeCourses(List<CourseDto> courseDtos)
+        {
+            return CreateActionResult(await _courseService.AddRangeAsync(courseDtos));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveCourses(List<int> ids)
+        {
+            return CreateActionResult(await _courseService.RemoveRangeAsync(ids));
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCoursesWithFeatures()
+        public async Task<IActionResult> Any(int id)
         {
-            return CreateActionResult(await _courseService.GetCoursesWithFeatures());
+            return CreateActionResult(await _courseService.AnyAsync(x => x.Id == id));
         }
     }
 }

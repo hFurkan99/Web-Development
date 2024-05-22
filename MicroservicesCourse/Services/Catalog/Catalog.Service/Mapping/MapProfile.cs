@@ -14,6 +14,7 @@ namespace Catalog.Service.Mapping
             CreateMap<CourseUpdateDto, Course>();
             CreateMap<Course, CourseWithCategoryDto>();
             CreateMap<Category, CategoryWithCoursesDto>();
+            CreateMap<CategoryCreateDto, Category>();
             CreateMap<CourseCreateDto, Course>();
         }
     }

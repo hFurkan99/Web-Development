@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Catalog.Core.DTOs
+namespace Shared.DTOs
 {
     public class CustomResponseDto<T>
     {
