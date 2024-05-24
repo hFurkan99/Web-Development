@@ -10,6 +10,8 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 namespace Catalog.API
 {
@@ -17,9 +19,8 @@ namespace Catalog.API
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             //FluentValidation
             builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CourseDtoValidator>());
@@ -27,6 +28,23 @@ namespace Catalog.API
             {
                 options.SuppressModelStateInvalidFilter = true;
 
+            });
+
+            // Localization services
+
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("tr"),
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
             });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -64,6 +82,15 @@ namespace Catalog.API
             }
 
             app.UseHttpsRedirection();
+
+            var supportedCultures = new[] { "en", "tr"};
+            var localizationOptions = new RequestLocalizationOptions()
+                .SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+
             //CustomException
             app.UseCustomException();
 

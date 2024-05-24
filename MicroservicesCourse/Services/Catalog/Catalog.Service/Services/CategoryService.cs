@@ -5,6 +5,7 @@ using Catalog.Core.Repositories;
 using Catalog.Core.Services;
 using Catalog.Core.UnitOfWorks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Localization;
 using Shared.DTOs;
 
 namespace Catalog.Service.Services
@@ -13,7 +14,7 @@ namespace Catalog.Service.Services
     {
         private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryService(IGenericRepository<Category> repository, IUnitOfWork unitOfWork, IMapper mapper, ICategoryRepository categoryRepository) : base(repository, unitOfWork, mapper)
+        public CategoryService(IGenericRepository<Category> repository, IUnitOfWork unitOfWork, IMapper mapper, ICategoryRepository categoryRepository, IStringLocalizer<SharedResources> localizer) : base(repository, unitOfWork, mapper, localizer)
         {
             _categoryRepository = categoryRepository;
         }

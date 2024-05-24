@@ -6,6 +6,7 @@ using Catalog.Core.UnitOfWorks;
 using Catalog.Service.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Shared.DTOs;
 using System.Linq.Expressions;
 
@@ -16,12 +17,14 @@ namespace Catalog.Service.Services
         private readonly IGenericRepository<Entity> _repository;
         protected readonly IUnitOfWork _unitOfWork;
         protected readonly IMapper _mapper;
+        private readonly IStringLocalizer<SharedResources> _serviceLocalizer;
 
-        public Service(IGenericRepository<Entity> repository, IUnitOfWork unitOfWork, IMapper mapper)
+        public Service(IGenericRepository<Entity> repository, IUnitOfWork unitOfWork, IMapper mapper, IStringLocalizer<SharedResources> serviceLocalizer)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _serviceLocalizer = serviceLocalizer;
         }
 
         public async Task<CustomResponseDto<Dto>> AddAsync(Dto dto)
@@ -58,7 +61,10 @@ namespace Catalog.Service.Services
         public async Task<CustomResponseDto<Dto>> GetByIdAsync(int id)
         {
             var entity = await _repository.GetByIdAsync(id);
-            if (entity == null) throw new NotFoundExcepiton($"{typeof(Entity).Name}({id}) not found");
+            //if (entity == null) throw new NotFoundExcepiton($"{typeof(Entity).Name}({id}) not found");
+            var message = _serviceLocalizer["Welcome"];
+            if (entity == null) throw new NotFoundExcepiton(_serviceLocalizer["Welcome"]);
+
             var dto = _mapper.Map<Dto>(entity);
             return CustomResponseDto<Dto>.Success(StatusCodes.Status200OK, dto);
         }

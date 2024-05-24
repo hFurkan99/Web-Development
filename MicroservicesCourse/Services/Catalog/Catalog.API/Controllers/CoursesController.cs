@@ -1,6 +1,10 @@
 ﻿using Catalog.Core.DTOs;
 using Catalog.Core.Services;
+using Catalog.Service;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Shared.ControllerBases;
 
 namespace Catalog.API.Controllers
@@ -8,10 +12,12 @@ namespace Catalog.API.Controllers
     public class CoursesController : CustomBaseController
     {
         private readonly ICourseService _courseService;
+        private readonly IStringLocalizer<SharedResources> _localizer;
 
-        public CoursesController(ICourseService courseService)
+        public CoursesController(ICourseService courseService, IStringLocalizer<SharedResources> stringLocalizer)
         {
             _courseService = courseService;
+            _localizer = stringLocalizer;
         }
 
         [HttpGet]
@@ -67,5 +73,33 @@ namespace Catalog.API.Controllers
         {
             return CreateActionResult(await _courseService.AnyAsync(x => x.Id == id));
         }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var message = _localizer["Welcome"];
+            return Ok(new { Message = message });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SetLang(string lang)
+        {
+            //en-US , tr-TR
+            await SetCulture(lang);
+
+            return Ok(_localizer["setLang"]);
+        }
+
+        #region PrivateMethods
+        private async Task SetCulture(string culture)
+        {
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName,
+                        CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                        new CookieOptions
+                        {
+                            Expires = DateTimeOffset.UtcNow.AddYears(1)
+                        });
+        }
+        #endregion
     }
 }

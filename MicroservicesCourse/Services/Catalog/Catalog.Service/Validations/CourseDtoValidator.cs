@@ -1,21 +1,21 @@
 ﻿using Catalog.Core.DTOs;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Localization;
 
 namespace Catalog.Service.Validations
 {
     public class CourseDtoValidator : AbstractValidator<CourseCreateDto>
     {
-        public CourseDtoValidator()
+        private readonly IStringLocalizer<SharedResources> _localizer;
+
+        public CourseDtoValidator(IStringLocalizer<SharedResources> localizer)
         {
-            RuleFor(x => x.Name).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
+            _localizer = localizer;
+
+            RuleFor(x => x.Name).NotNull().WithMessage("{PropertyName} " + _localizer["req"]).NotEmpty().WithMessage("{PropertyName} " + _localizer["req"]);
             RuleFor(x => x.Price).InclusiveBetween(1, int.MaxValue).WithMessage("{PropertyName} must be greater than 0");
             RuleFor(x => x.CategoryId).GreaterThan(0).WithMessage("{PropertyName} must be greater than 0");
         }
-        
+
     }
 }
