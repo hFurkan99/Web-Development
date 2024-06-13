@@ -1,10 +1,9 @@
 ﻿using Catalog.Core.DTOs;
 using Catalog.Core.Services;
-using Catalog.Service;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Shared;
 using Shared.ControllerBases;
 
 namespace Catalog.API.Controllers
@@ -12,9 +11,9 @@ namespace Catalog.API.Controllers
     public class CoursesController : CustomBaseController
     {
         private readonly ICourseService _courseService;
-        private readonly IStringLocalizer<SharedResources> _localizer;
+        private readonly IStringLocalizer<SharedLocalization> _localizer;
 
-        public CoursesController(ICourseService courseService, IStringLocalizer<SharedResources> stringLocalizer)
+        public CoursesController(ICourseService courseService, IStringLocalizer<SharedLocalization> stringLocalizer)
         {
             _courseService = courseService;
             _localizer = stringLocalizer;

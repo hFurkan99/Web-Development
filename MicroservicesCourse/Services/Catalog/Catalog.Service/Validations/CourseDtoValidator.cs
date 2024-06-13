@@ -1,14 +1,15 @@
 ﻿using Catalog.Core.DTOs;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
+using Shared;
 
 namespace Catalog.Service.Validations
 {
     public class CourseDtoValidator : AbstractValidator<CourseCreateDto>
     {
-        private readonly IStringLocalizer<SharedResources> _localizer;
+        private readonly IStringLocalizer<SharedLocalization> _localizer;
 
-        public CourseDtoValidator(IStringLocalizer<SharedResources> localizer)
+        public CourseDtoValidator(IStringLocalizer<SharedLocalization> localizer)
         {
             _localizer = localizer;
 

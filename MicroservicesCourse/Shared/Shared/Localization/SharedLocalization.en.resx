@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GreaterZero" xml:space="preserve">
+    <value>must be greater than 0</value>
+  </data>
   <data name="req" xml:space="preserve">
-    <value>gerekli alan</value>
+    <value>is required</value>
   </data>
   <data name="setLang" xml:space="preserve">
-    <value>Dil Türkçe olarak değiştirildi</value>
+    <value>The language has changed</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Siteye hoş geldiniz</value>
+    <value>Welcome to our site</value>
   </data>
 </root>

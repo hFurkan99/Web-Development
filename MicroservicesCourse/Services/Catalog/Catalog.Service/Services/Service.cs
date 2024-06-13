@@ -3,12 +3,13 @@ using Catalog.Core.Models;
 using Catalog.Core.Repositories;
 using Catalog.Core.Services;
 using Catalog.Core.UnitOfWorks;
-using Catalog.Service.Exceptions;
+using Shared.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Shared.DTOs;
 using System.Linq.Expressions;
+using Shared;
 
 namespace Catalog.Service.Services
 {
@@ -17,9 +18,9 @@ namespace Catalog.Service.Services
         private readonly IGenericRepository<Entity> _repository;
         protected readonly IUnitOfWork _unitOfWork;
         protected readonly IMapper _mapper;
-        private readonly IStringLocalizer<SharedResources> _serviceLocalizer;
+        private readonly IStringLocalizer<SharedLocalization> _serviceLocalizer;
 
-        public Service(IGenericRepository<Entity> repository, IUnitOfWork unitOfWork, IMapper mapper, IStringLocalizer<SharedResources> serviceLocalizer)
+        public Service(IGenericRepository<Entity> repository, IUnitOfWork unitOfWork, IMapper mapper, IStringLocalizer<SharedLocalization> serviceLocalizer)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;

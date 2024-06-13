@@ -1,6 +1,14 @@
-
-using Basket.Caching;
+using Basket.API.Middlewares;
+using Basket.Caching.Services;
 using Basket.Core.Services;
+using Basket.Service.Validations;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Shared.Filters;
+using System.Globalization;
+
+
 
 namespace Basket.API
 {
@@ -9,6 +17,34 @@ namespace Basket.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+
+            //FluentValidation
+            builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<BasketDtoValidator>());
+
+
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+
+            });
+
+
+            // Localization services
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Localization");
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("tr"),
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
 
             // Add services to the container.
 
@@ -30,6 +66,18 @@ namespace Basket.API
             }
 
             app.UseHttpsRedirection();
+
+            //Localization
+            var supportedCultures = new[] { "en", "tr" };
+            var localizationOptions = new RequestLocalizationOptions()
+                .SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+
+            //CustomException
+            app.UseCustomException();
 
             app.UseAuthorization();
 

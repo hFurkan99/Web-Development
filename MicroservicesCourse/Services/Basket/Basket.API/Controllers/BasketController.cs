@@ -1,6 +1,5 @@
 ﻿using Basket.Core.DTOs;
 using Basket.Core.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ControllerBases;
 

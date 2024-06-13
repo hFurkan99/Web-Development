@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Shared.DTOs;
 using System.Text.Json;
 
-namespace Catalog.API.Middlewares
+namespace Basket.API.Middlewares
 {
     public static class UseCustomExceptionHandler
     {

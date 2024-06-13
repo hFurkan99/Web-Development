@@ -1,6 +1,6 @@
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
-using Catalog.API.Filters;
+using Shared.Filters;
 using Catalog.API.Middlewares;
 using Catalog.API.Modules;
 using Catalog.Repository;
@@ -24,6 +24,7 @@ namespace Catalog.API
 
             //FluentValidation
             builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CourseDtoValidator>());
+
             builder.Services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
@@ -32,7 +33,7 @@ namespace Catalog.API
 
             // Localization services
 
-            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Localization");
 
             builder.Services.Configure<RequestLocalizationOptions>(options =>
             {
@@ -83,6 +84,7 @@ namespace Catalog.API
 
             app.UseHttpsRedirection();
 
+            //Localization
             var supportedCultures = new[] { "en", "tr"};
             var localizationOptions = new RequestLocalizationOptions()
                 .SetDefaultCulture(supportedCultures[0])

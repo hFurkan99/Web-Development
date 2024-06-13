@@ -4,19 +4,20 @@ using Catalog.Core.Models;
 using Catalog.Core.Repositories;
 using Catalog.Core.Services;
 using Catalog.Core.UnitOfWorks;
-using Catalog.Service.Exceptions;
+using Shared.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 using Shared.DTOs;
+using Shared;
 
 namespace Catalog.Service.Services
 {
     public class CourseService : Service<Course, CourseDto>, ICourseService
     {
         private readonly ICourseRepository _courseRepository;
-        private readonly IStringLocalizer<SharedResources> _localizer;
+        private readonly IStringLocalizer<SharedLocalization> _localizer;
 
-        public CourseService(IGenericRepository<Course> repository, IUnitOfWork unitOfWork, IMapper mapper, ICourseRepository courseRepository, IStringLocalizer<SharedResources> localizer, IStringLocalizer<SharedResources> serviceLocalizer) : base(repository, unitOfWork, mapper, serviceLocalizer)
+        public CourseService(IGenericRepository<Course> repository, IUnitOfWork unitOfWork, IMapper mapper, ICourseRepository courseRepository, IStringLocalizer<SharedLocalization> localizer, IStringLocalizer<SharedLocalization> serviceLocalizer) : base(repository, unitOfWork, mapper, serviceLocalizer)
         {
             _courseRepository = courseRepository;
             _localizer = localizer;

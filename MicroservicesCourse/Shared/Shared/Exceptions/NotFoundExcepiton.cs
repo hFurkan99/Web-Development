@@ -1,5 +1,5 @@
 ﻿
-namespace Catalog.Service.Exceptions
+namespace Shared.Exceptions
 {
     public class NotFoundExcepiton : Exception
     {

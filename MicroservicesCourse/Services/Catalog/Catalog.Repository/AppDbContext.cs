@@ -36,18 +36,18 @@ namespace Catalog.Repository
                     switch (item.State)
                     {
                         case EntityState.Added:
-                            {
-                                Entry(entityReference).Property(x => x.UpdatedDate).IsModified = false;
-                                entityReference.CreatedDate = DateTime.Now;
-                                break;
-                            }
+                        {
+                            Entry(entityReference).Property(x => x.UpdatedDate).IsModified = false;
+                            entityReference.CreatedDate = DateTime.Now;
+                            break;
+                        }
                         case EntityState.Modified:
-                            {
-                                Entry(entityReference).Property(x => x.CreatedDate).IsModified = false;
+                        {
+                            Entry(entityReference).Property(x => x.CreatedDate).IsModified = false;
 
-                                entityReference.UpdatedDate = DateTime.Now;
-                                break;
-                            }
+                            entityReference.UpdatedDate = DateTime.Now;
+                            break;
+                        }
                     }
                 }
             }

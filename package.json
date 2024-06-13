@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@bs/login": "^0.2.1"
+  }
+}

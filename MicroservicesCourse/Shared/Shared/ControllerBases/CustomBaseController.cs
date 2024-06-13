@@ -13,9 +13,7 @@ namespace Shared.ControllerBases
             if(response.StatusCode == 204)
                 return new ObjectResult(null)
                 {
-                    
-                    StatusCode = response.StatusCode
-                    
+                    StatusCode = response.StatusCode   
                 };
 
             return new ObjectResult(response)

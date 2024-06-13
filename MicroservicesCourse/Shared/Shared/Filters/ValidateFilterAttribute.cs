@@ -1,9 +1,8 @@
-﻿using Catalog.Core.DTOs;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Shared.DTOs;
 
-namespace Catalog.API.Filters
+namespace Shared.Filters
 {   public class ValidateFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
